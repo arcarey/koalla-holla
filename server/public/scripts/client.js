@@ -38,3 +38,15 @@ function saveKoala( newKoala ){
   // ajax call to server to get koalas
  
 }
+
+function getKoalas() {
+  console.log('in getKoalas');
+  // ajax call to server to get koalas
+  $.ajax({
+    type: 'GET',
+    url: '/koalas',
+  }).then(function (response) {
+    console.log('GET', response);
+
+  });
+}

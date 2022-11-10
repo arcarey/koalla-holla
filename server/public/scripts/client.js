@@ -67,16 +67,10 @@ function renderToDom(koalas) {
   //please check naming convention on ${koala.transfer}
   $('#viewKoalas').empty();
 
-<<<<<<< HEAD
   for (let koala of koalas) //koalas? should this be something else?
     if (koala.ready_to_transfer === true) {
       $('#viewKoalas').append(`
     <tr>
-=======
-  for (let koala of koalas)//koalas? should this be something else?
-  $('#viewKoalas').append(`
-    <tr class="koalaTable">
->>>>>>> main
       <td>${koala.name}</td>
       <td>${koala.age}</td>
       <td>${koala.gender}</td>

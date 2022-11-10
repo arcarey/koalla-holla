@@ -38,3 +38,20 @@ function saveKoala( newKoala ){
   // ajax call to server to get koalas
  
 }
+
+
+function renderToDom() {
+  //please check naming convention on ${koala.transfer}
+  $('#viewKoalas').empty();
+
+  for (let koala of koalas)//koalas? should this be something else?
+  $('#viewKoalas').append(`
+    <tr>
+      <td> ${koala.name}</td>
+      <td>${koala.age}</td>
+      <td>${koala.gender}</td>
+      <td>${koala.transfer}</td>
+      <td>${koala.notes}</td>
+    </tr>
+  `)
+}

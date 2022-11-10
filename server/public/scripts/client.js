@@ -47,6 +47,8 @@ function getKoalas() {
     url: '/koalas',
   }).then(function (response) {
     console.log('GET', response);
-
-  });
+  })
+  .catch(function(error) {
+    alert('things are bad', error);
+});
 }

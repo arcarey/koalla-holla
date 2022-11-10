@@ -12,10 +12,6 @@ function setupClickListeners() {
   $('#addButton').on('click', addKoala);
 }
 
-function getKoalas() {
-  console.log('in getKoalas');
-  // ajax call to server to get koalas
-} // end getKoalas
 
 function addKoala() {
   console.log('in addButton on click');
@@ -57,7 +53,7 @@ function getKoalas() {
   // ajax call to server to get koalas
   $.ajax({
     type: 'GET',
-    url: '/koalas',
+    url: '/koalas'
   }).then(function (response) {
     console.log('GET', response);
   })

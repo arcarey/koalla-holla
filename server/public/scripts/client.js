@@ -12,10 +12,6 @@ function setupClickListeners() {
   $('#addButton').on('click', addKoala);
 }
 
-function getKoalas() {
-  console.log('in getKoalas');
-  // ajax call to server to get koalas
-} // end getKoalas
 
 function addKoala() {
   console.log('in addButton on click');
@@ -52,6 +48,20 @@ function saveKoala(newKoala) {
 }
 
 
+function getKoalas() {
+  console.log('in getKoalas');
+  // ajax call to server to get koalas
+  $.ajax({
+    type: 'GET',
+    url: '/koalas'
+  }).then(function (response) {
+    console.log('GET', response);
+  })
+  .catch(function(error) {
+    alert('things are bad', error);
+});
+}
+
 function renderToDom() {
   //please check naming convention on ${koala.transfer}
   $('#viewKoalas').empty();
@@ -66,4 +76,5 @@ function renderToDom() {
       <td>${koala.notes}</td>
     </tr>
   `)
+
 }

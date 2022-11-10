@@ -20,7 +20,7 @@ koalaRouter.get('/', (req, res) => {
         res.send(result.rows);
     }).catch ((err) => {
         console.log('Error making query:', queryText, 'error:', err);
-        req.sendStatus(500);
+        res.sendStatus(500);
     })
 })
 

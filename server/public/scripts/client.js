@@ -70,7 +70,7 @@ function renderToDom(koalas) {
 
   for (let koala of koalas)//koalas? should this be something else?
   $('#viewKoalas').append(`
-    <tr>
+    <tr class="koalaTable">
       <td>${koala.name}</td>
       <td>${koala.age}</td>
       <td>${koala.gender}</td>

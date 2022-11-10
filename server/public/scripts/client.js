@@ -12,7 +12,6 @@ function setupClickListeners() {
   $('#addButton').on('click', addKoala);
 }
 
-
 function addKoala() {
   console.log('in addButton on click');
   // get user input and put in an object
@@ -47,20 +46,20 @@ function saveKoala(newKoala) {
     });
 }
 
-
 function getKoalas() {
   console.log('in getKoalas');
   // ajax call to server to get koalas
   $.ajax({
     type: 'GET',
-    url: '/koalas'
-  }).then(function (response) {
-    console.log('GET', response);
-    renderToDom(response);
+    url: '/koalas',
   })
-  .catch(function(error) {
-    alert('things are bad', error);
-});
+    .then(function (response) {
+      console.log('GET', response);
+      renderToDom(response);
+    })
+    .catch(function (error) {
+      alert('things are bad', error);
+    });
 }
 
 function renderToDom(koalas) {
@@ -68,8 +67,9 @@ function renderToDom(koalas) {
   //please check naming convention on ${koala.transfer}
   $('#viewKoalas').empty();
 
-  for (let koala of koalas)//koalas? should this be something else?
-  $('#viewKoalas').append(`
+  for (let koala of koalas) //koalas? should this be something else?
+    if (koala.ready_to_transfer === true) {
+      $('#viewKoalas').append(`
     <tr>
       <td>${koala.name}</td>
       <td>${koala.age}</td>
@@ -77,6 +77,17 @@ function renderToDom(koalas) {
       <td>${koala.ready_to_transfer}</td>
       <td>${koala.notes}</td>
     </tr>
-  `)
-
+  `);
+    } else if (koala.ready_to_transfer === false) {
+      $('#viewKoalas').append(`
+    <tr>
+      <td>${koala.name}</td>
+      <td>${koala.age}</td>
+      <td>${koala.gender}</td>
+      <td>${koala.ready_to_transfer}</td>
+      <td>${koala.notes}</td>
+      <td><button id="transfer-btn">Ready For Transfer</button></td>
+    </tr>
+  `);
+    }
 }

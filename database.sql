@@ -3,7 +3,7 @@
 -- paste in create table command and execute
 -- paste in the INSERT command and execute
 
-CREATE TABLE "holla-table" (
+CREATE TABLE "holla_table" (
 	"id" serial primary key,
 	"name" varchar(30) not null,
 	"gender" varchar(10) not null,
@@ -12,7 +12,7 @@ CREATE TABLE "holla-table" (
 	"notes" varchar(100)
 );
 
-INSERT INTO "holla-table" (
+INSERT INTO "holla_table" (
 	"name", "gender", "age", "ready_to_transfer", "notes")
 VALUES ('Jean', 'F', '5', 'Y', 'Allergic to lots of lava'),
 ('Ororo', 'F', '7', 'N', 'Loves listening to Paula (Abdul)'),

@@ -56,23 +56,25 @@ function getKoalas() {
     url: '/koalas'
   }).then(function (response) {
     console.log('GET', response);
+    renderToDom(response);
   })
   .catch(function(error) {
     alert('things are bad', error);
 });
 }
 
-function renderToDom() {
+function renderToDom(koalas) {
+  console.log(koalas);
   //please check naming convention on ${koala.transfer}
   $('#viewKoalas').empty();
 
   for (let koala of koalas)//koalas? should this be something else?
   $('#viewKoalas').append(`
     <tr>
-      <td> ${koala.name}</td>
+      <td>${koala.name}</td>
       <td>${koala.age}</td>
       <td>${koala.gender}</td>
-      <td>${koala.transfer}</td>
+      <td>${koala.ready_to_transfer}</td>
       <td>${koala.notes}</td>
     </tr>
   `)

@@ -81,6 +81,10 @@ function renderToDom(koalas) {
       <td>${koala.gender}</td>
       <td>${koala.ready_to_transfer}</td>
       <td>${koala.notes}</td>
+      <td></td>
+      <td>
+        <button class="del-btn" data-id="${koala.id}">Delete</button>
+      </td>
     </tr>
   `);
     } else if (koala.ready_to_transfer === false) {
@@ -92,6 +96,10 @@ function renderToDom(koalas) {
       <td>${koala.ready_to_transfer}</td>
       <td>${koala.notes}</td>
       <td><button id="transfer-btn">Ready For Transfer</button></td>
+      <td>
+        <button class="del-btn" data-id="${koala.id}">Delete</button>
+      </td>
+
     </tr>
   `);
     }

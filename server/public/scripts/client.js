@@ -122,3 +122,20 @@ function deleteKoala() {
     alert(`Something is very wrong ${error}`);
   })//end ajax
 }//end deleteKoala
+
+
+function updateKoala(id, transfer) {
+  $.ajax({
+    url: `/koalas/transfer/${id}`,
+    type: 'PUT',
+    data: { ready_to_transfer: transfer },
+  })
+    .then(() => {
+      getKoalas();
+    })
+    .catch((err) => {
+      alert('Issue updating');
+    });
+}
+
+

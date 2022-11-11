@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 function setupClickListeners() {
   $('#addButton').on('click', addKoala);
-  $("#viewKoalas").on('click', '#whatarewecallingthis', deleteKoala );
+  $("#viewKoalas").on('click', '.del-btn', deleteKoala );
 }
 
 function addKoala() {

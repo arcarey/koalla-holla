@@ -10,7 +10,8 @@ $(document).ready(function () {
 
 function setupClickListeners() {
   $('#addButton').on('click', addKoala);
-  $("#viewKoalas").on('click', '.del-btn', deleteKoala );
+  $('#viewKoalas').on('click', '.del-btn', deleteKoala);
+  $('#viewKoalas').on('click', '#transfer-btn', transferKoala);
 }
 
 function addKoala() {
@@ -69,7 +70,7 @@ function getKoalas() {
 }
 
 function renderToDom(koalas) {
-  console.log(koalas);
+  console.log('Render Function response:', koalas);
   //please check naming convention on ${koala.transfer}
   $('#viewKoalas').empty();
 
@@ -96,7 +97,7 @@ function renderToDom(koalas) {
       <td>${koala.gender}</td>
       <td>${koala.ready_to_transfer}</td>
       <td>${koala.notes}</td>
-      <td><button id="transfer-btn">Ready For Transfer</button></td>
+      <td><button id="transfer-btn" data-id="${koala.id}">Ready For Transfer</button></td>
       <td>
         <button class="del-btn" data-id="${koala.id}">Delete</button>
       </td>
@@ -106,36 +107,50 @@ function renderToDom(koalas) {
     }
 }
 
-
 function deleteKoala() {
   console.log('in deleteKoala');
   const koalaId = $(this).data('id');
   console.log(koalaId);
   $.ajax({
     method: 'DELETE',
-    url: `/koalas/${koalaId}`
+    url: `/koalas/${koalaId}`,
   })
-  .then(function() {
-    getKoalas();
-  })
-  .catch(function(error) {
-    alert(`Something is very wrong ${error}`);
-  })//end ajax
-}//end deleteKoala
-
-
-function updateKoala(id, transfer) {
-  $.ajax({
-    url: `/koalas/transfer/${id}`,
-    type: 'PUT',
-    data: { ready_to_transfer: transfer },
-  })
-    .then(() => {
+    .then(function () {
       getKoalas();
     })
-    .catch((err) => {
-      alert('Issue updating');
+    .catch(function (error) {
+      alert(`Something is very wrong ${error}`);
+    }); //end ajax
+} //end deleteKoala
+
+// function updateKoala(id, transfer) {
+//   $.ajax({
+//     url: `/koalas/transfer/${id}`,
+//     type: 'PUT',
+//     data: { ready_to_transfer: transfer },
+//   })
+//     .then(() => {
+//       getKoalas();
+//     })
+//     .catch((err) => {
+//       alert('Issue updating');
+//     });
+// }
+
+function transferKoala() {
+  console.log('in transfer');
+  let id = $(this).data('id');
+  let data = { readyForTransfer: true };
+  console.log(id);
+  $.ajax({
+    method: 'PUT',
+    url: `/koalas/transfer/`+id,
+    data: data
+  })
+    .then(function () {
+      console.log('I hope this works');
+    })
+    .catch(function (error) {
+      alert('Cannot update data:', error);
     });
 }
-
-

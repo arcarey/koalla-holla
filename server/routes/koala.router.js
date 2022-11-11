@@ -3,6 +3,7 @@ const koalaRouter = express.Router();
 
 // DB CONNECTION
 const pg = require('pg');
+const router = require('../../../pg-put-delete-activity/server/routes/book.router');
 const Pool = pg.Pool;
 const pool = new Pool ({
     database: 'koala-holla',
@@ -43,7 +44,23 @@ koalaRouter.post('/', (req, res) => {
 
 
 // PUT
-
+router.put("/:id", (req, res) => {
+    let id = req.params.id;
+    let readyForTransfer = req.body.readyForTransfer;
+    let queryText =`
+        UPDATE holla_table
+            SET "ready_to_transfer" = $1
+            WHERE "id" = $1`;
+    pool
+        .query(queryText, [readyForTransfer, id])    
+        .then(() => {
+            console.log('update to transfer readiness status confirmed');
+            res.sendStatus(200);
+        }).catch((err) => {
+            console.log('err updating transfer status', err);
+            res.sendStatus(500);
+        });
+});
 
 // DELETE
 koalaRouter.delete("/:id", (req, res) => {

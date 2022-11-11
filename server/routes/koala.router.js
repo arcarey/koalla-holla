@@ -52,7 +52,7 @@ koalaRouter.post('/', (req, res) => {
 });
 
 // PUT
-router.put('/readyForTransfer/:id', (req, res) => {
+router.put('/transfer/:id', (req, res) => {
   console.log('In put request server side');
   let id = req.params.id;
   let readyForTransfer = req.body.readyForTransfer;

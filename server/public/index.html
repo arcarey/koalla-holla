@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Koalla Holla</title>
     <script src="vendors/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
@@ -11,16 +11,21 @@
     <header>
       <img src="images/icon.png" class="icon" />
       <h1>Koala Holla</h1>
-      <h3>1976 Llama Comma Drive</h2>
-      <h3>Walla Walla, WA</h2>
+      <h3>1976 Llama Comma Drive</h3>
+      <h3>Walla Walla, WA</h3>
     </header>
     <section id="addKoala">
       <h2>Add Koala</h2>
-      <input type="text" id="nameIn" value="" placeholder="Name">
-      <input type="text" id="ageIn" value="" placeholder="Age">
-      <input type="text" id="genderIn" value="" placeholder="Gender">
-      <input type="text" id="readyForTransferIn" value="" placeholder="Transfer">
-      <input type="text" id="notesIn" value="" placeholder="Notes">
+      <input type="text" id="nameIn" value="" placeholder="Name" />
+      <input type="text" id="ageIn" value="" placeholder="Age" />
+      <input type="text" id="genderIn" value="" placeholder="Gender" />
+      <input
+        type="text"
+        id="readyForTransferIn"
+        value=""
+        placeholder="Transfer"
+      />
+      <input type="text" id="notesIn" value="" placeholder="Notes" />
       <button type="button" id="addButton">Add Koala</button>
     </section>
     <section>
@@ -33,10 +38,11 @@
             <th>Gender</th>
             <th>Ready for Transfer</th>
             <th>Notes</th>
+            <th>Mark Ready</th>
+            <th>Remove</th>
           </tr>
         </thead>
-        <tbody id="viewKoalas">
-        </tbody>
+        <tbody id="viewKoalas"></tbody>
       </table>
     </section>
   </body>

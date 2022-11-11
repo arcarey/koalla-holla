@@ -10,6 +10,7 @@ $(document).ready(function () {
 
 function setupClickListeners() {
   $('#addButton').on('click', addKoala);
+  $('#viewKoalas').on('click', '#transfer-btn', transferKoala);
 }
 
 function addKoala() {
@@ -68,7 +69,7 @@ function getKoalas() {
 }
 
 function renderToDom(koalas) {
-  console.log(koalas);
+  console.log('Render Function response:', koalas);
   //please check naming convention on ${koala.transfer}
   $('#viewKoalas').empty();
 
@@ -91,8 +92,25 @@ function renderToDom(koalas) {
       <td>${koala.gender}</td>
       <td>${koala.ready_to_transfer}</td>
       <td>${koala.notes}</td>
-      <td><button id="transfer-btn">Ready For Transfer</button></td>
+      <td><button data-id="${koala.id}"id="transfer-btn">Ready For Transfer</button></td>
     </tr>
   `);
     }
+}
+
+function transferKoala() {
+  console.log('in transfer btn');
+  let id = $(this).data('id');
+  let dataToTransfer = { readyForTransfer: true };
+  $.ajax({
+    method: 'PUT',
+    url: `/koalas/${id}`,
+    data: dataToTransfer,
+  })
+    .then(function () {
+      console.log('Transfer returned!');
+    })
+    .catch(function () {
+      alert('Unable to process request. Error:', error);
+    });
 }

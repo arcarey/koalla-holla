@@ -80,3 +80,51 @@ function renderToDom(koalas) {
   `)
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function updateKoala(id, transfer) {
+  $.ajax({
+    url: `/koalas/transfer/${id}`,
+    type: 'PUT',
+    data: { ready_to_transfer: transfer },
+  })
+    .then(() => {
+      getKoalas();
+    })
+    .catch((err) => {
+      alert('Issue updating');
+    });
+}

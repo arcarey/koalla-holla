@@ -39,7 +39,12 @@ function saveKoala(newKoala) {
     data: newKoala,
   })
     .then(function () {
-      console.log('Post complted');
+      console.log('Post completed');
+      $('#nameIn').val('');
+      $('#ageIn').val('');
+      $('#genderIn').val('');
+      $('#readyForTransferIn').val('');
+      $('#notesIn').val('');
       getKoalas();
     })
     .catch(function (error) {

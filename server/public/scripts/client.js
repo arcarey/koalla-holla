@@ -10,6 +10,7 @@ $(document).ready(function () {
 
 function setupClickListeners() {
   $('#addButton').on('click', addKoala);
+  $("#viewKoalas").on('click', '#whatarewecallingthis', deleteKoala );
 }
 
 function addKoala() {
@@ -104,3 +105,20 @@ function renderToDom(koalas) {
   `);
     }
 }
+
+
+function deleteKoala() {
+  console.log('in deleteKoala');
+  const koalaId = $(this).data('id');
+  console.log(koalaId);
+  $.ajax({
+    method: 'DELETE',
+    url: `/koalas/${koalaId}`
+  })
+  .then(function() {
+    getKoalas();
+  })
+  .catch(function(error) {
+    alert(`Something is very wrong ${error}`);
+  })//end ajax
+}//end deleteKoala

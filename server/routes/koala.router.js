@@ -52,14 +52,15 @@ koalaRouter.post('/', (req, res) => {
 });
 
 // PUT
-router.put('/:id', (req, res) => {
+router.put('/readyForTransfer/:id', (req, res) => {
+  console.log('In put request server side');
   let id = req.params.id;
   let readyForTransfer = req.body.readyForTransfer;
   console.log('readyforTransfer', readyForTransfer, 'id', id);
   let queryText = `
         UPDATE holla_table
             SET "ready_to_transfer" = $1
-            WHERE "id" = $2`;
+            WHERE "id" = 4`;
   pool
     .query(queryText, [readyForTransfer, id])
     .then(() => {

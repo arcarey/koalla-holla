@@ -98,19 +98,4 @@ function renderToDom(koalas) {
     }
 }
 
-function transferKoala() {
-  console.log('in transfer btn');
-  let id = $(this).data('id');
-  let dataToTransfer = { readyForTransfer: true };
-  $.ajax({
-    method: 'PUT',
-    url: `/koalas/${id}`,
-    data: dataToTransfer,
-  })
-    .then(function () {
-      console.log('Transfer returned!');
-    })
-    .catch(function () {
-      alert('Unable to process request. Error:', error);
-    });
-}
+function transferKoala() {}
